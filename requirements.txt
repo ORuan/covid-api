@@ -1,0 +1,7 @@
+autopep8==1.5
+beautifulsoup4==4.9.3
+DataBaseManager==0.0.8
+Languages==1.0.0
+pycodestyle==2.6.0
+soupsieve==2.1
+urllib3==1.26.2
