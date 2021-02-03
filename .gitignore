@@ -4,3 +4,4 @@ __pycache__
 *.db
 .file_env
 .idea
+driver

@@ -390,3 +390,45 @@ ERROR in /home/cryfzs/Projects/twitter.scraping/controller.py: HTTP Error 403: F
 ERROR in /home/cryfzs/Projects/twitter.scraping/controller.py: 'Monitor' object has no attribute 'proxy_list' -- 15:37:07
 ERROR in /home/cryfzs/Projects/twitter.scraping/controller.py: 'Monitor' object has no attribute 'raw' -- 15:37:07
 ERROR in /home/cryfzs/Projects/twitter.scraping/main.py: <class 'KeyboardInterrupt'> -- 15:37:10
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: local variable 'req' referenced before assignment -- 07:45:43
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 07:45:43
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: local variable 'req' referenced before assignment -- 07:45:46
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 07:45:46
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:45:48
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:47:13
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: name 'data' is not defined -- 07:53:28
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:53:36
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:53:43
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: Invalid character '/' position 0
+  line 1:
+//*[@id="container_noticias"]/div[1]/div[2]/ul
+^ -- 07:56:40
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:56:45
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:57:55
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:58:43
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 07:59:20
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:00:18
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:02:24
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: ResultSet object has no attribute 'text'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()? -- 08:07:25
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:07:29
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: ResultSet object has no attribute 'text'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()? -- 08:08:00
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: ResultSet object has no attribute 'text'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()? -- 08:08:04
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:08:05
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: ResultSet object has no attribute 'text'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()? -- 08:08:44
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:08:46
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: ResultSet object has no attribute 'text'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()? -- 08:09:05
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: ResultSet object has no attribute 'text'. You're probably treating a list of elements like a single element. Did you call find_all() when you meant to call find()? -- 08:09:13
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:09:16
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:10:29
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 08:15:10
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:47:31
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:47:52
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 08:51:24
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:19:52
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:20:24
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:15:09
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:15:29
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:16:49
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:18:02
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 11:21:51
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 110] Connection timed out -- 11:39:25
