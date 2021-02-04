@@ -432,3 +432,59 @@ ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:16:49
 ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:18:02
 ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 11:21:51
 ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 110] Connection timed out -- 11:39:25
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 13:52:18
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:06:12
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:07:17
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:11:32
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:12:18
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:15:48
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 17:16:16
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 17:16:16
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:17:43
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:18:08
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:24:17
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:24:19
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:32:07
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:32:33
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:35:15
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 17:35:51
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 09:03:58
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:04:05
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:08:20
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:09:50
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:10:20
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:15:39
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:17:28
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:18:13
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:21:15
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:21:33
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:24:51
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:26:02
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:27:07
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:28:59
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:29:18
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:30:00
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:30:41
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:31:09
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:31:17
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:32:09
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:32:33
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:33:53
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:35:53
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:37:06
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:38:01
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:41:06
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:41:54
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 09:42:22
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:15:57
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:16:49
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:17:42
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:20:20
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:20:57
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:22:14
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:22:30
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:23:39
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:02
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:16
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:20
+ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:56

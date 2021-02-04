@@ -36,24 +36,31 @@ class Monitor():
 
     def process(self):
         self._get()
+        
+        data_message = list()
+        
         try:
             data = BeautifulSoup(self.raw, 'lxml') 
 
             s3_text = data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h3')
             s4_text = data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h4')
-
-            for i in range(len(s3_text)) :
-                print(s4_text[i].text)
-                print(s3_text[i].text)
-            print('-------',city,'-------')
-            
         except Exception as err:
             commit_errors(err, __file__)
+        try:
+            for i in range(len(s3_text)):
+                data_message.insert(i, f'{s4_text[i].text}: {s3_text[i].text}\n')
+            
+            with open('./message.txt', 'w') as msg:
+                msg.writelines(data_message)        
+            
+        except Exception as err:
+            print(err)
+                
 
     def monitoring_daemon(self):
         s = sched.scheduler(time.time, time.sleep)
         while True:
-            s.enter(5, 1, self.process)
+            s.enter(3, 1, self.process)
             s.run()
 
     
