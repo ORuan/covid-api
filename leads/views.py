@@ -1,5 +1,5 @@
 from leads.models import Leads
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from leads.forms import UserForm
 
 def register_users(request):
@@ -7,7 +7,7 @@ def register_users(request):
         form_data = UserForm(request.POST)
         if form_data.is_valid():
             form_data.save()
-            return redirect('/')
+            return redirect('leads:create')
         else:
             form_data = UserForm(request.POST)
             return render(request, 'forms/create.html', {'form':form_data})
@@ -19,8 +19,6 @@ def register_users(request):
             "title":"Cadastro"
         }
         return render(request, 'forms/create.html', context)
-
-
 
 def cancel_users(request):
     if request.method == "POST":
@@ -30,13 +28,16 @@ def cancel_users(request):
             return redirect('painel')
         else:
             form_data = UserForm(request.POST)
-            return render(request, 'forms/create.html', {'form':form_data})
-        return render(request, 'forms/create.html', {'form':form_data})
+            return render(request, 'forms/cancel.html', {'form':form_data})
+        return render(request, 'forms/cancel.html', {'form':form_data})
     else:
         form_data = UserForm()
         context = {
             "form":form_data,
             "title":"Cadastro"
         }
-        return render(request, 'forms/create.html', context)
+        return render(request, 'forms/cancel.html', context)
 
+
+def sucess(request):
+    return render(request, 'sucess.html')
