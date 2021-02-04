@@ -7,7 +7,7 @@ def register_users(request):
         form_data = UserForm(request.POST)
         if form_data.is_valid():
             form_data.save()
-            return redirect('painel')
+            return redirect('/')
         else:
             form_data = UserForm(request.POST)
             return render(request, 'forms/create.html', {'form':form_data})

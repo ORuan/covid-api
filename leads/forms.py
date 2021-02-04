@@ -2,6 +2,6 @@ from leads.models import Leads
 from django.forms import ModelForm
 
 class UserForm(ModelForm):
-    class meta:
+    class Meta:
         model = Leads
-        fields = "__all__"
+        fields = '__all__'
