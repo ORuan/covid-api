@@ -18,8 +18,8 @@ from leads.models import Leads
 
 class AutomationWhatsApp():
 
-    def __init__(self, url, number):
-        self.url = url+number
+    def __init__(self, leads):
+        self.url = 'https://web.whatsapp.com/send?phone='
 
     def config(self):
         try:
@@ -50,22 +50,24 @@ class AutomationWhatsApp():
 
     def send_status(self):
         self.config()
-        self.driver.get(url)
+        
         try:
-            with open('./message.txt', 'r') as file:
+            with open('./messages/message.txt', 'r') as file:
                 content = file.readlines()
                 self.content = content
         except Exception as err:
             print(err)
 
         try:
-            inp_xpath = '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
-            wait = WebDriverWait(self.driver, 600)
-            input_box = wait.until(
-                EC.presence_of_element_located((By.XPATH, inp_xpath)))
+            for lead in self.leads:
+                self.driver.get(url+lead)
+                inp_xpath = '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
+                wait = WebDriverWait(self.driver, 600)
+                input_box = wait.until(
+                    EC.presence_of_element_located((By.XPATH, inp_xpath)))
 
-            for msg in self.content:
-                input_box.send_keys(msg + Keys.ENTER)
+                for msg in self.content:
+                    input_box.send_keys(msg + Keys.ENTER)
 
         except Exception as err:
             print('Erro no envio da mensagem', err)
@@ -80,4 +82,3 @@ class AutomationWhatsApp():
             self.driver.get(url)
         except Exception as err:
             print(err)
-            # commit_errors(err)

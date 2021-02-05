@@ -1,15 +1,11 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from bs4 import BeautifulSoup
-from utils import commit_errors
 import urllib.request as req
 import time
 import sched
 import random
 from lxml import html
 
-
-city = "guanambi"
-URL = f"http://www.{city}.ba.gov.br/coronavirus#conteudo"
 
 HEADERS_LIST = [
             'Mozilla/5.0 (Windows; U; Windows NT 6.1; x64; fr; rv:1.9.2.13) Gecko/20101203 Firebird/3.6.13',
@@ -21,46 +17,41 @@ HEADERS_LIST = [
 HEADER = {'User-Agent': random.choice(HEADERS_LIST), 'X-Requested-With': 'XMLHttpRequest'}
 
 class Monitor():
-    def __init__(self):
-        self.url = URL
+    def __init__(self, cities):
         self.header = HEADER['User-Agent']
 
-    def _get(self):
-        try:
-            _req = req.Request(self.url)
-            _req.add_header('User-Agent',  self.header)
-            with req.urlopen(_req) as response:
-                self.raw = response.read()
-        except Exception as err:
-            commit_errors(err, __file__)
 
     def process(self):
-        self._get()
-        
         data_message = list()
-        
         try:
-            data = BeautifulSoup(self.raw, 'lxml') 
+            for city in self.cities:
+                _req = req.Request(f"http://www.{city}.ba.gov.br/coronavirus#conteudo")
+                with req.urlopen(_req) as response:
+                    self.data = response.read()
 
-            s3_text = data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h3')
-            s4_text = data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h4')
-        except Exception as err:
-            commit_errors(err, __file__)
-        try:
+                _data = BeautifulSoup(self.data, 'lxml') 
+                s3_text = _data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h3')
+                s4_text = _data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h4')
+            
             for i in range(len(s3_text)):
                 data_message.insert(i, f'{s4_text[i].text}: {s3_text[i].text}\n')
             
-            with open('./message.txt', 'w') as msg:
+            with open(f'./messages/{city}.txt', 'w') as msg:
+                print(data_message, city)
                 msg.writelines(data_message)        
             
         except Exception as err:
             print(err)
-                
 
-    def monitoring_daemon(self):
+
+    def monitoring_daemon(self, cities):
+        list_cities = list(cities)
+        self.cities = list()
+        
+        for i in range(len(list_cities)):
+            self.cities.append(list_cities[i][2]) 
+
         s = sched.scheduler(time.time, time.sleep)
-        while True:
-            s.enter(3, 1, self.process)
+        while True: 
+            s.enter(5, 1, self.process)
             s.run()
-
-    

@@ -488,3 +488,13 @@ ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:02
 ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:16
 ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:20
 ERROR in main.py: <class 'KeyboardInterrupt'> -- 11:24:56
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: <urlopen error [Errno 101] Network is unreachable> -- 11:17:01
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: <urlopen error [Errno 101] Network is unreachable> -- 11:17:06
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 11:17:16
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 11:17:16
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 11:17:19
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 11:17:19
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 11:17:24
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 11:17:24
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: [Errno 104] Connection reset by peer -- 11:17:27
+ERROR in /home/cryfzs/Projects/covid-api/controller.py: 'Monitor' object has no attribute 'raw' -- 11:17:27

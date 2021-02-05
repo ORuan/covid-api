@@ -1,0 +1,11 @@
+Casos Confirmados: 220
+Casos Positivo - Teste Rápido: 141
+Casos Positivo - PCR: 79
+Casos de Óbito: 11
+Casos Notificados: 632
+Casos Descartados: 375
+Casos Aguardando Resultado: 19
+Casos Recuperados: 177
+Monitorados em domicilio: 37
+Paciente Hospitalizado: 2
+Casos ativos: 32

@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <h3>Cancelar Inscrição</h3>
-    <h6>Uma pena que queria cancelar a inscrição</h6>
-    <form class="col s12" method="POST">
+    <h3 style="text-align: center;">Cancelar Inscrição</h3>
+    <form class="col s12" method="GET">
         {% csrf_token %}
-        <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="number">Número de WhatsApp</label>
+                <input id="icon_prefix" type="text" name="telephoneNumber" class="validate">
+                <span class="helper-text" data-error="{{ noexist }}" data-success="Correto">ex: 5577998714634</span>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar
             <i class="material-icons right">send</i>
         </button>
     </form>
