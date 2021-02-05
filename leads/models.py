@@ -6,13 +6,11 @@ class Leads(models.Model):
     CNN = "Carinhanha"
     MLH = "Malhada"
     GNB = "Guanambi"
-    PLM = "Palmas"
 
     MONTH_CHOICES = (
         (CNN, "Carinhanha"),
         (MLH, "Malhada"),
         (GNB, "Guanambi"),
-        (PLM, "Palmas"),
     )
 
     city = models.CharField(max_length=50,
