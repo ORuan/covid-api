@@ -25,6 +25,7 @@ class Monitor():
         data_message = list()
         try:
             for city in self.cities:
+                print(city)
                 _req = req.Request(f"http://www.{city}.ba.gov.br/coronavirus#conteudo")
                 with req.urlopen(_req) as response:
                     self.data = response.read()

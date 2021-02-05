@@ -18,8 +18,11 @@ from leads.models import Leads
 
 class AutomationWhatsApp():
 
-    def __init__(self, leads):
+    def __init__(self, leads, number):
         self.url = 'https://web.whatsapp.com/send?phone='
+        self.leads = leads
+        self.number = number
+
 
     def config(self):
         try:
@@ -45,24 +48,31 @@ class AutomationWhatsApp():
                 executable_path=path_install
             )
         except Exception as err:
-            # commit_errors(err)
             print(err)
 
     def send_status(self):
-        self.config()
         
         try:
-            with open('./messages/message.txt', 'r') as file:
-                content = file.readlines()
-                self.content = content
+            if self.driver:
+                pass
         except Exception as err:
-            print(err)
-
+            self.config()
+        
         try:
-            for lead in self.leads:
-                self.driver.get(url+lead)
+            for lead in range(len(self.leads)):
+                time.sleep(2)
+                try:
+                    with open(f'./messages/{self.leads[lead]}.txt', 'r') as file:
+                        content = file.readlines()
+                        self.content = content
+                except Exception as err:
+                    print(err)
+                
+                self.driver.get(self.url+self.number[lead])
+
+                wait = WebDriverWait(self.driver, 60)
+
                 inp_xpath = '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
-                wait = WebDriverWait(self.driver, 600)
                 input_box = wait.until(
                     EC.presence_of_element_located((By.XPATH, inp_xpath)))
 
@@ -70,8 +80,9 @@ class AutomationWhatsApp():
                     input_box.send_keys(msg + Keys.ENTER)
 
         except Exception as err:
-            print('Erro no envio da mensagem', err)
+            print(err)
             self.driver.quit()
+            
 
     def scan_qr_code(self):
         self.config()
