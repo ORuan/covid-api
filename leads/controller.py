@@ -33,12 +33,11 @@ class Monitor():
                 s3_text = _data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h3')
                 s4_text = _data.select('#container_noticias > div.bloco_covid > div.painel > ul > li > h4')
             
-            for i in range(len(s3_text)):
-                data_message.insert(i, f'{s4_text[i].text}: {s3_text[i].text}\n')
-            
-            with open(f'./messages/{city}.txt', 'w') as msg:
-                print(data_message, city)
-                msg.writelines(data_message)        
+                for i in range(len(s3_text)):
+                    data_message.insert(i, f'{s4_text[i].text}: {s3_text[i].text}\n')
+                
+                with open(f'./messages/{city}.txt', 'w') as msg:
+                    msg.writelines(data_message)        
             
         except Exception as err:
             print(err)
