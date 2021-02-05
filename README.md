@@ -11,4 +11,4 @@ The chatbot will make request in official site of your town hall
 ### How the data will showed
 ![print-whatsapp](https://github.com/ORuan/covid-chatbot/blob/main/.gitassets/print-dados.jpeg?raw=true)
 ---
-OBS: The data will show according the town hall saved in website's city.
+OBS: The data gonna shown according the town hall saved in website's city.
