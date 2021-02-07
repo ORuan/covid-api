@@ -13,13 +13,15 @@ from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import logging
+from selenium.common.exceptions import UnexpectedAlertPresentException
 
 
 class AutomationWhatsApp():
 
-    def __init__(self, leads, number):
+    def __init__(self, citys, number):
         self.url = 'https://web.whatsapp.com/send?phone='
-        self.leads = leads
+        self.citys = citys
         self.number = number
 
     def config(self):
@@ -46,6 +48,7 @@ class AutomationWhatsApp():
                 executable_path=path_install
             )
         except Exception as err:
+            logging.error(err)
             print(err)
 
     def send_status(self):
@@ -54,20 +57,21 @@ class AutomationWhatsApp():
             if self.driver:
                 pass
         except Exception as err:
+            logging.info('Installing webdriver')
             self.config()
 
         try:
-            for lead in range(len(self.leads)):
+            for _number_u in range(len(self.number)):
                 time.sleep(2)
                 try:
-                    with open(f'./messages/{self.leads[lead]}.txt', 'r') as file:
+                    with open(f'./messages/{self.citys[_number_u]}.txt', 'r') as file:
                         content = file.readlines()
                         self.content = content
                 except Exception as err:
-                    print(err)
+                    logging.error(err)
+                    
 
-                self.driver.get(self.url+self.number[lead])
-
+                self.driver.get(self.url+self.number[_number_u])
                 wait = WebDriverWait(self.driver, 60)
 
                 inp_xpath = '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
@@ -76,9 +80,12 @@ class AutomationWhatsApp():
 
                 for msg in self.content:
                     input_box.send_keys(msg + Keys.ENTER)
-
+            self.driver.quit()
+        except UnexpectedAlertPresentException:
+            self.driver.switch_to.alert.accept()
+            logging.error(err)
+            
         except Exception as err:
-            print(err)
             self.driver.quit()
 
     def scan_qr_code(self):
@@ -86,7 +93,8 @@ class AutomationWhatsApp():
         try:
             self.driver.get(url)
         except NoSuchElementException:
+            logging.error(NoSuchElementException)
             time.sleep(3)
             self.driver.get(url)
         except Exception as err:
-            print(err)
+            logging.error(err)

@@ -9,9 +9,7 @@
                 <label for="number">Número de WhatsApp</label>
                 {{ form.number }}
                 {% if form.number.error %}
-                <span class="helper-text" data-error={{form.number.errors}}>ex: 5577998714634</span>
-                {% else %}
-                <span class="helper-text" data-success="Correto">ex: 5577998714634</span>
+                <span class="helper-text" data-error={{form.number.error}}>ex: 5577998714634</span>
                 {% endif %}
             </div>
         </div>
@@ -47,7 +45,7 @@
 
         if (county == '55') {
             if (ddd.length == 2) {
-                if (number_raw.length == 8 || number_raw.length == 7) {
+                if (number_raw.length == 8 || number_raw.length == 9) {
                     btn_register.className = 'btn .waves-effect .waves-light'
                 } else {
                     btn_register.className = btn_register.className + " disabled"

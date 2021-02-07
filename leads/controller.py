@@ -11,6 +11,11 @@ import schedule
 from whatsapp.seln import AutomationWhatsApp
 from leads.models import Leads
 import threading
+import logging
+from datetime import datetime
+
+logging.basicConfig(filename='app.log', level=logging.ERROR)
+
 
 HEADERS_LIST = [
     'Mozilla/5.0 (Windows; U; Windows NT 6.1; x64; fr; rv:1.9.2.13) Gecko/20101203 Firebird/3.6.13',
@@ -41,14 +46,14 @@ class Monitor():
             self.cities = sorted(set(_cities))
             return _numbers
         except Exception as err:
+            logging.error(err)
             print(err)
 
     def process(self):
-        data_message = list()
-        leads = self.get_leads()
+        _numbers = self.get_leads()
         try:
             for city in self.cities:
-                time.sleep(1)
+                data_message = list()
                 _req = req.Request(
                     f"http://www.{city}.ba.gov.br/coronavirus#conteudo")
                 with req.urlopen(_req) as response:
@@ -65,15 +70,17 @@ class Monitor():
                         i, f'{s4_text[i].text}: {s3_text[i].text}\n')
 
                 with open(f'./messages/{city}.txt', 'w') as msg:
+                    msg.writelines('------\n')
                     msg.writelines(data_message)
 
-            th_sender = AutomationWhatsApp(leads=self.cities, number=leads)
+            th_sender = AutomationWhatsApp(citys=self.cities, number=_numbers)
             threading.Thread(target=th_sender.send_status, daemon=True).start()
         except Exception as err:
+            logging.error(err)
             print(err)
 
     def monitoring_daemon(self):
-        schedule.every().day.at("10:30").do(self.process)
+        schedule.every().day.at("09:10").do(self.process)
         while True:
             schedule.run_pending()
-            time.sleep(1)
+            time.sleep(0.1)
