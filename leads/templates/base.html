@@ -17,17 +17,48 @@
 
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{% url 'leads:cancel' %}">Cancelar Inscrição</a></li>
-                <li><a href="{% url 'leads:sucess' %}">Contato</a></li>
-                <li><a href="{% url 'leads:create' %}">Cadastro</a></li>
+                <li>
+                    <a href="{% url 'leads:cancel' %}">
+                        <i class="material-icons left">block</i>
+                        Cancelar Inscrição
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'leads:sucess' %}">
+                        <i class="material-icons left">check_box</i>
+                        Sucesso
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'leads:create' %}">
+                        <i class="material-icons left">add_box</i>
+                        Cadastrar
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="{% url 'leads:cancel' %}">Cancelar Inscrição</a></li>
-        <li><a href="{% url 'leads:sucess' %}">Contato</a></li>
-        <li><a href="{% url 'leads:create' %}">Cadastro</a></li>
+        <li>
+            <a href="{% url 'leads:sucess' %}">
+                <i class="material-icons left">check_box</i>
+                Sucesso
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'leads:cancel' %}">
+                <i class="material-icons left">block</i>
+                Cancelar Inscrição
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'leads:create' %}">
+                <i class="material-icons left">add_box</i>
+                Cadastrar
+            </a>
+        </li>
     </ul>
     <div class="container">
         {% block content %}
