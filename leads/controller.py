@@ -12,6 +12,7 @@ from whatsapp.seln import AutomationWhatsApp
 from leads.models import Leads
 import threading
 import logging
+from datetime import datetime
 
 
 logging.basicConfig(filename='app.log', encoding='utf-8', level=logging.ERROR)
@@ -71,7 +72,7 @@ class Monitor():
                         i, f'{s4_text[i].text}: {s3_text[i].text}\n')
 
                 with open(f'./messages/{city}.txt', 'w') as msg:
-                    msg.writelines(data_message)
+                    msg.writelines(f'---{city}:{datetime.now().day}---\n',data_message)
 
             th_sender = AutomationWhatsApp(leads=self.cities, number=leads)
             threading.Thread(target=th_sender.send_status, daemon=True).start()
