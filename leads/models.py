@@ -1,7 +1,7 @@
 from django.db import models
 
 class Leads(models.Model):
-    number = models.CharField(max_length=15, null=False)
+    number = models.CharField(max_length=15, null=False, unique=True)
 
     CNN = "Carinhanha"
     MLH = "Malhada"

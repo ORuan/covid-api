@@ -10,3 +10,10 @@ class UserForm(ModelForm):
         widgets = {
             'number': forms.NumberInput(attrs={'class':'validate', 'placeholder':'5577998714634', 'id':"number" }),
         }
+class UserDelForm(ModelForm):
+    class Meta:
+        model = Leads
+        fields = ['number']
+        widgets = {
+                'number': forms.NumberInput(attrs={'class':'validate', 'placeholder':'5577998714634', 'id':"number" }),
+        }
