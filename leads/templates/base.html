@@ -6,18 +6,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19 WhatsApp</title>
-    <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/virus-transmission-flat/48/Virus_Corona-512.png" />
-
+    <link rel="shortcut icon"
+        href="https://cdn3.iconfinder.com/data/icons/virus-transmission-flat/48/Virus_Corona-512.png" />
 </head>
 
 <body>
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+            <a href="#!" class="brand-logo"><i class="material-icons">whatshot</i>COVID-19</a>
+
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'leads:cancel' %}">Cancelar Inscrição</a></li>
+                <li><a href="{% url 'leads:sucess' %}">Contato</a></li>
+                <li><a href="{% url 'leads:create' %}">Cadastro</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{% url 'leads:cancel' %}">Cancelar Inscrição</a></li>
+        <li><a href="{% url 'leads:sucess' %}">Contato</a></li>
+        <li><a href="{% url 'leads:create' %}">Cadastro</a></li>
+    </ul>
     <div class="container">
         {% block content %}
-        
+
         {% endblock content %}
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var options = NaN
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, options);
+        });
+
+    </script>
 </body>
 
 </html>
