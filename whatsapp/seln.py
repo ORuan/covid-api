@@ -4,7 +4,7 @@ import sys
 import time
 import io
 import json
-import chromedriver_autoinstaller
+import chromedriver_autoinstaller as installator
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
@@ -13,7 +13,6 @@ from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from leads.models import Leads
 
 
 class AutomationWhatsApp():
@@ -23,10 +22,9 @@ class AutomationWhatsApp():
         self.leads = leads
         self.number = number
 
-
     def config(self):
         try:
-            path_install = chromedriver_autoinstaller.install()
+            path_install = installator.install()
             options = webdriver.ChromeOptions()
             prefs = {'profile.managed_default_content_settings.images': 2,
                      "profile.managed_default_content_settings.images": 2, 'disk-cache-size': 4096}
@@ -51,13 +49,13 @@ class AutomationWhatsApp():
             print(err)
 
     def send_status(self):
-        
+
         try:
             if self.driver:
                 pass
         except Exception as err:
             self.config()
-        
+
         try:
             for lead in range(len(self.leads)):
                 time.sleep(2)
@@ -67,7 +65,7 @@ class AutomationWhatsApp():
                         self.content = content
                 except Exception as err:
                     print(err)
-                
+
                 self.driver.get(self.url+self.number[lead])
 
                 wait = WebDriverWait(self.driver, 60)
@@ -82,7 +80,6 @@ class AutomationWhatsApp():
         except Exception as err:
             print(err)
             self.driver.quit()
-            
 
     def scan_qr_code(self):
         self.config()

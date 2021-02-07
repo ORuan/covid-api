@@ -4,12 +4,15 @@
     <form class="col s12" method="POST">
         <h3 style="text-align: center;">Cadastro</h3>
         {% csrf_token %}
-
         <div class="row">
             <div class="input-field col s12">
                 <label for="number">Número de WhatsApp</label>
                 {{ form.number }}
-                <span class="helper-text" data-error="Errado" data-success="Correto">ex: 5577998714634</span>
+                {% if form.number.error %}
+                <span class="helper-text" data-error={{form.number.errors}}>ex: 5577998714634</span>
+                {% else %}
+                <span class="helper-text" data-success="Correto">ex: 5577998714634</span>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -18,7 +21,7 @@
                 <label>Cidade</label>
             </div>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+        <button class="btn waves-effect waves-light" id="register" type="submit" name="action">Cadastrar
             <i class="material-icons right">send</i>
         </button>
     </form>
@@ -30,7 +33,33 @@
         let options = null
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems, options);
+
+        document.querySelector('#number').addEventListener('keydown', validate)
+
     });
+
+    function validate() {
+        let number = document.querySelector('#number')
+        const county = number.value.slice(0, 2)
+        const ddd = number.value.slice(2, 4)
+        const number_raw = number.value.slice(4, -1)
+        const btn_register = document.querySelector('#register')
+
+        if (county == '55') {
+            if (ddd.length == 2) {
+                if (number_raw.length == 8 || number_raw.length == 7) {
+                    btn_register.className = 'btn .waves-effect .waves-light'
+                } else {
+                    btn_register.className = btn_register.className + " disabled"
+                }
+            } else {
+                btn_register.className = btn_register.className + " disabled"
+            }
+        } else {
+            btn_register.className = btn_register.className + " disabled"
+        }
+    }
+
 
 
 </script>
