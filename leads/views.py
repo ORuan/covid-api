@@ -51,3 +51,7 @@ def cancel_users(request):
 
 def sucess(request):
     return render(request, 'sucess.html')
+
+
+def _redirect(request):
+    return redirect('leads:create')
