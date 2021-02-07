@@ -11,6 +11,11 @@ import schedule
 from whatsapp.seln import AutomationWhatsApp
 from leads.models import Leads
 import threading
+import logging
+
+
+logging.basicConfig(filename='app.log', encoding='utf-8', level=logging.ERROR)
+
 
 HEADERS_LIST = [
     'Mozilla/5.0 (Windows; U; Windows NT 6.1; x64; fr; rv:1.9.2.13) Gecko/20101203 Firebird/3.6.13',
@@ -41,6 +46,7 @@ class Monitor():
             self.cities = sorted(set(_cities))
             return _numbers
         except Exception as err:
+            logging.error(err)
             print(err)
 
     def process(self):
@@ -70,6 +76,7 @@ class Monitor():
             th_sender = AutomationWhatsApp(leads=self.cities, number=leads)
             threading.Thread(target=th_sender.send_status, daemon=True).start()
         except Exception as err:
+            logging.error(err)
             print(err)
 
     def monitoring_daemon(self):

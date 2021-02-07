@@ -13,7 +13,7 @@ from selenium.webdriver import Chrome
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import logging
 
 class AutomationWhatsApp():
 
@@ -46,6 +46,7 @@ class AutomationWhatsApp():
                 executable_path=path_install
             )
         except Exception as err:
+            logging.error(err)
             print(err)
 
     def send_status(self):
@@ -54,6 +55,7 @@ class AutomationWhatsApp():
             if self.driver:
                 pass
         except Exception as err:
+            logging.error(err)
             self.config()
 
         try:
@@ -64,7 +66,8 @@ class AutomationWhatsApp():
                         content = file.readlines()
                         self.content = content
                 except Exception as err:
-                    print(err)
+                    logging.error(err)
+                    
 
                 self.driver.get(self.url+self.number[lead])
 
@@ -79,6 +82,7 @@ class AutomationWhatsApp():
 
         except Exception as err:
             print(err)
+            logging.error(err)
             self.driver.quit()
 
     def scan_qr_code(self):
@@ -86,7 +90,8 @@ class AutomationWhatsApp():
         try:
             self.driver.get(url)
         except NoSuchElementException:
+            logging.error(NoSuchElementException)
             time.sleep(3)
             self.driver.get(url)
         except Exception as err:
-            print(err)
+            logging.error(err)

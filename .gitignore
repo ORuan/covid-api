@@ -5,3 +5,4 @@ __pycache__
 .file_env
 .idea
 driver
+*.log

@@ -2,7 +2,7 @@ from leads.models import Leads
 from django.shortcuts import render, redirect
 from leads.forms import UserForm, UserDelForm
 from django.core.exceptions import ObjectDoesNotExist
-
+import logging
 
 def register_users(request):
     if request.method == "POST":
@@ -16,6 +16,7 @@ def register_users(request):
         return render(request, 'forms/create.html', {'form': form_data})
     else:
         form_data = UserForm()
+        logging.warning('erro')
         context = {
             "form": form_data,
             "title": "Cadastro"
@@ -36,7 +37,7 @@ def cancel_users(request):
                 lead_instance.delete()
                 return redirect('leads:sucess')
             except Exception as err:
-                print(err)
+                logging.error(err)
                 context['form'] = UserDelForm(request.POST)
                 return render(request, 'forms/cancel.html', context)
 
