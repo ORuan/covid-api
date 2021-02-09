@@ -80,7 +80,7 @@ class Monitor():
             print(err)
 
     def monitoring_daemon(self):
-        schedule.every().day.at("09:10").do(self.process)
+        schedule.every().day.at("16:31").do(self.process)
         while True:
             schedule.run_pending()
             time.sleep(0.1)

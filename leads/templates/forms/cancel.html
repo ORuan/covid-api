@@ -7,11 +7,11 @@
         <div class="row">
             <div class="input-field col s12">
                 <label for="number">Número de WhatsApp</label>
-                <input id="icon_prefix" type="text" name="telephoneNumber" class="validate">
-                {% if form.errors or erros%}
-                    <span class="helper-text" data-success="{{erros}}" data-error="{{ noexist }}" >ex: 5577998714634</span>
+                {{form.number}}
+                {% if form.number %}
+                <span class="helper-text">{{form.number.error}}</span>
                 {% else %}
-                    <span class="helper-text" data-success="Correto">ex: 5577998714634</span>
+                <span class="helper-text">Certo</span>
                 {% endif %}
 
             </div>

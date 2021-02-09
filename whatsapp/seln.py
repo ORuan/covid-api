@@ -14,8 +14,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import logging
-from selenium.common.exceptions import UnexpectedAlertPresentException
-
+from selenium.common.exceptions import UnexpectedAlertPresentException, NoAlertPresentException
 
 class AutomationWhatsApp():
 
@@ -60,33 +59,26 @@ class AutomationWhatsApp():
             logging.info('Installing webdriver')
             self.config()
 
-        try:
-            for _number_u in range(len(self.number)):
-                time.sleep(2)
-                try:
-                    with open(f'./messages/{self.citys[_number_u]}.txt', 'r') as file:
-                        content = file.readlines()
-                        self.content = content
-                except Exception as err:
-                    logging.error(err)
-                    
-
+        for _number_u in range(len(self.number)):
+            time.sleep(1)
+            try:
+                with open(f'./messages/{self.citys[_number_u]}.txt', 'r') as file:
+                    content = file.readlines()
+                    self.content = content
                 self.driver.get(self.url+self.number[_number_u])
                 wait = WebDriverWait(self.driver, 60)
-
                 inp_xpath = '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
                 input_box = wait.until(
                     EC.presence_of_element_located((By.XPATH, inp_xpath)))
-
                 for msg in self.content:
                     input_box.send_keys(msg + Keys.ENTER)
-            self.driver.quit()
-        except UnexpectedAlertPresentException:
-            self.driver.switch_to.alert.accept()
-            logging.error(err)
-            
-        except Exception as err:
-            self.driver.quit()
+                self.driver.quit()
+            except UnexpectedAlertPresentException:
+                logging.error(err)
+                continue
+            except Exception as err:
+                logging.error(err)
+
 
     def scan_qr_code(self):
         self.config()
@@ -94,7 +86,5 @@ class AutomationWhatsApp():
             self.driver.get(url)
         except NoSuchElementException:
             logging.error(NoSuchElementException)
-            time.sleep(3)
-            self.driver.get(url)
         except Exception as err:
             logging.error(err)
