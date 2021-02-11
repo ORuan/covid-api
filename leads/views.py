@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from leads.forms import UserForm, UserDelForm
 from django.core.exceptions import ObjectDoesNotExist
 import logging
-
+from django.contrib.auth.decorators import login_required
 
 def register_users(request):
     if request.method == "POST":
@@ -41,6 +41,9 @@ def cancel_users(request):
 def sucess(request):
     return render(request, 'sucess.html')
 
+@login_required
+def qr_code(request):
+    return render(request, 'qr_code.html')
 
 def _redirect(request):
     return redirect('leads:create')

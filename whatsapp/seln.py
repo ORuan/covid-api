@@ -15,7 +15,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import logging
 from selenium.common.exceptions import UnexpectedAlertPresentException, NoAlertPresentException
-
+from core.settings import DEBUG, DOMAIN, BASE_DIR
+from selenium.common.exceptions import WebDriverException
 class AutomationWhatsApp():
 
     def __init__(self, citys, number):
@@ -31,6 +32,7 @@ class AutomationWhatsApp():
                      "profile.managed_default_content_settings.images": 2, 'disk-cache-size': 4096}
             options.add_experimental_option("prefs", prefs)
             options.add_argument('--no-sandbox')
+            options.add_argument('--headless')
             options.add_argument('--disable-gpu')
             options.add_argument('--ignore-certificate-errors')
             options.add_argument("--test-type")
@@ -66,7 +68,7 @@ class AutomationWhatsApp():
                     content = file.readlines()
                     self.content = content
                 self.driver.get(self.url+self.number[_number_u])
-                wait = WebDriverWait(self.driver, 60)
+                wait = WebDriverWait(self.driver, 10)
                 inp_xpath = '//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
                 input_box = wait.until(
                     EC.presence_of_element_located((By.XPATH, inp_xpath)))
@@ -74,17 +76,22 @@ class AutomationWhatsApp():
                     input_box.send_keys(msg + Keys.ENTER)
                 self.driver.quit()
             except UnexpectedAlertPresentException:
+                print('err')
                 logging.error(err)
                 continue
+            except WebDriverException as err:
+                os.system(f'rm {BASE_DIR}/static/qr_code.png')
+                time.sleep(5)
+                self.driver.save_screenshot(f'{BASE_DIR}/static/qr_code.png')     
+                if DEBUG == True:
+                    print('http://localhost:8000/8ade7b25-d7c9-400c-8ea6-e1c8413d01af/')
+                else:
+                    print('http://'+DOMAIN+'/8ade7b25-d7c9-400c-8ea6-e1c8413d01af/')
+                #Develoment
+                # Handle render qr_code_View     
+                time.sleep(5)     
+                self.driver.quit()
+                print(err.screen, file=sys.stderr)
             except Exception as err:
+                self.driver.quit()
                 logging.error(err)
-
-
-    def scan_qr_code(self):
-        self.config()
-        try:
-            self.driver.get(url)
-        except NoSuchElementException:
-            logging.error(NoSuchElementException)
-        except Exception as err:
-            logging.error(err)

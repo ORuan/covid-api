@@ -50,6 +50,7 @@ class Monitor():
             print(err)
 
     def process(self):
+        print('rondando')
         _numbers = self.get_leads()
         try:
             for city in self.cities:
@@ -74,13 +75,14 @@ class Monitor():
                     msg.writelines(data_message)
 
             th_sender = AutomationWhatsApp(citys=self.cities, number=_numbers)
+            print(_numbers)
             threading.Thread(target=th_sender.send_status, daemon=True).start()
         except Exception as err:
             logging.error(err)
-            print(err)
 
     def monitoring_daemon(self):
-        schedule.every().day.at("16:31").do(self.process)
+        #schedule.every().day.at("02:25").do(self.process)
+        schedule.every().minute.do(self.process)
         while True:
             schedule.run_pending()
             time.sleep(0.1)
